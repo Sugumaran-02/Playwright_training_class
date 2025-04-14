@@ -25,8 +25,8 @@ test.describe('Group2', ()=>{
                 console.log("The test5");
                 })
 
-               test('test06', async({page}) =>{
-                console.log("The test06");
+               test('test61', async({page}) =>{
+                console.log("The test61");
                 })
 })
 
