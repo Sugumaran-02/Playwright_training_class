@@ -1,0 +1,232 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Right click
+- Location: C:\Users\sugum\Documents\Playwright_class\tests\Mouse_hover.spec.js:27:5
+
+# Error details
+
+```
+Error: page.waitForEvent: Test timeout of 30000ms exceeded.
+=========================== logs ===========================
+waiting for event "popup"
+============================================================
+    at C:\Users\sugum\Documents\Playwright_class\tests\Mouse_hover.spec.js:38:9
+```
+
+# Page snapshot
+
+```yaml
+- navigation:
+  - link "jQuery contextMenu (2.x)"
+  - navigation "main navigation":
+    - list:
+      - listitem:
+        - link "Introduction"
+      - listitem:
+        - link "Documentation"
+      - listitem:
+        - link "Demo gallery"
+        - list:
+          - listitem:
+            - link "Simple Context Menu"
+          - listitem:
+            - link "FontAwesome icons"
+          - listitem:
+            - link "Accesskeys"
+          - listitem:
+            - link "Create Context Menu (asynchronous)"
+          - listitem:
+            - link "Create Context Menu (promise)"
+          - listitem:
+            - link "Command's action (callbacks)"
+          - listitem:
+            - link "Custom Command Types"
+          - listitem:
+            - link "Disabled Command"
+          - listitem:
+            - link "Disabled Callback Command"
+          - listitem:
+            - link "Changing Command's disabled status"
+          - listitem:
+            - link "Disabled Menu"
+          - listitem:
+            - link "Adding new Context Menu Triggers"
+          - listitem:
+            - link "Create Context Menu on demand"
+          - listitem:
+            - link "Importing HTML5 menu"
+          - listitem:
+            - link "HTML5 polyfill"
+          - listitem:
+            - link "HTML5 polyfill (Firefox)"
+          - listitem:
+            - link "Input Commands"
+          - listitem:
+            - link "Keeping the context menu open"
+          - listitem:
+            - link "Menus with titles"
+          - listitem:
+            - link "Context Menu on DOM Element"
+          - listitem:
+            - link "Submenus"
+          - listitem:
+            - link "Custom Activated Context Menu"
+          - listitem:
+            - link "Hover Activated Context Menu"
+          - listitem:
+            - link "Hover Activated Context Menu With Autohide"
+          - listitem:
+            - link "Left-Click Trigger"
+          - listitem:
+            - link "Swipe Trigger"
+    - text: "Maintained by:"
+    - link "Creative Digital Agency":
+      - img
+      - text: Creative Digital Agency
+- main:
+  - link " Fork on GitHub"
+  - 'heading "Demo: Simple Context Menu" [level=1]'
+  - list:
+    - listitem:
+      - 'link "Example code: Simple Context Menu"'
+    - listitem:
+      - 'link "Example HTML: Simple Context Menu"'
+    - listitem:
+      - link "jQuery Context Menu Demo Gallery"
+  - paragraph: right click me
+  - 'heading "Example code: Simple Context Menu" [level=2]'
+  - code: "$(function() { $.contextMenu({ selector: '.context-menu-one', callback: function(key, options) { var m = \"clicked: \" + key; window.console && console.log(m) || alert(m); }, items: { \"edit\": {name: \"Edit\", icon: \"edit\"}, \"cut\": {name: \"Cut\", icon: \"cut\"}, copy: {name: \"Copy\", icon: \"copy\"}, \"paste\": {name: \"Paste\", icon: \"paste\"}, \"delete\": {name: \"Delete\", icon: \"delete\"}, \"sep1\": \"---------\", \"quit\": {name: \"Quit\", icon: function(){ return 'context-menu-icon context-menu-icon-quit'; }} } }); $('.context-menu-one').on('click', function(e){ console.log('clicked', this); }) });"
+  - 'heading "Example HTML: Simple Context Menu" [level=2]'
+  - code: <span class="context-menu-one btn btn-neutral">right click me</span>
+  - heading "jQuery Context Menu Demo Gallery" [level=2]
+  - list:
+    - listitem:
+      - link "Simple Context Menu"
+    - listitem:
+      - link "Context Menu on DOM Element"
+    - listitem:
+      - link "Adding new Context Menu Triggers"
+    - listitem:
+      - link "Create Context Menu on demand"
+    - listitem:
+      - link "Create Context Menu (asynchronous)"
+    - listitem:
+      - link "Keeping the context menu open"
+    - listitem:
+      - link "Command's action (callbacks)"
+    - listitem:
+      - link "Left-Click Trigger"
+    - listitem:
+      - link "Swipe Trigger"
+    - listitem:
+      - link "Hover Activated Context Menu"
+    - listitem:
+      - link "Hover Activated Context Menu With Autohide"
+    - listitem:
+      - link "Custom Activated Context Menu"
+    - listitem:
+      - link "Disabled Menu"
+    - listitem:
+      - link "Disabled Command"
+    - listitem:
+      - link "Disabled Callback Command"
+    - listitem:
+      - link "Changing Command's disabled status"
+    - listitem:
+      - link "Accesskeys"
+    - listitem:
+      - link "Submenus"
+    - listitem:
+      - link "Input Commands"
+    - listitem:
+      - link "Custom Command Types"
+    - listitem:
+      - link "Menus with titles"
+    - listitem:
+      - link "Importing HTML5"
+      - list:
+        - link
+    - listitem:
+      - link "HTML5 Polyfill"
+    - listitem:
+      - link "HTML5 Polyfill (Firefox)"
+- separator
+- contentinfo:
+  - paragraph:
+    - text: Find jQuery contextMenu (2.x) on
+    - link "GitHub"
+    - text: .
+- list:
+  - listitem:  Edit
+  - listitem:  Cut
+  - listitem:  Copy
+  - listitem:  Paste
+  - listitem:  Delete
+  - listitem
+  - listitem:  Quit
+```
+
+# Test source
+
+```ts
+   1 | import { test,expect } from "@playwright/test";
+   2 |
+   3 | test('Keyboard action', async({page})=>{
+   4 |
+   5 |
+   6 |     await page.goto('https://testautomationpractice.blogspot.com/');
+   7 |     const element_hover= page.locator("//button[@class='dropbtn']")
+   8 |
+   9 |    await element_hover.hover()
+  10 |
+  11 |   //await page.waitForTimeout(4000)
+  12 | })
+  13 |
+  14 | test.skip('Double click', async({page})=>{
+  15 |     await page.goto('https://testautomationpractice.blogspot.com/');
+  16 |     const text_box1= await page.locator("//input[@id='field1']");
+  17 |     await text_box1.press('Control+A')
+  18 |     await text_box1.press('Control+X')
+  19 |     await text_box1.fill('Playwright pratice')
+  20 |     
+  21 |     const double_click_obj= page.locator("//button[contains(text(),'Copy Text')]")
+  22 |    await double_click_obj.dblclick()
+  23 |  await  page.waitForTimeout(4000)
+  24 |
+  25 | })
+  26 |
+  27 | test('Right click', async({page})=>{
+  28 |     await page.goto('https://swisnl.github.io/jQuery-contextMenu/demo.html');
+  29 |    const rightcli_elemt= page.locator('[class="context-menu-one btn btn-neutral"]');
+  30 |    //const rightcli_elemt= page.locator("/html/body/div/section/div/div/div/p/span");
+  31 |
+  32 |  // await  rightcli_elemt.click({button:'right'})
+  33 |
+  34 |   await page.waitForTimeout(4000)
+  35 |
+  36 |
+  37 |   const Popup01 = await Promise.all([
+> 38 |    page.waitForEvent('popup'),       // Wait for popup to open
+     |         ^ Error: page.waitForEvent: Test timeout of 30000ms exceeded.
+  39 |     page.click('[class="context-menu-one btn btn-neutral"]', { button: 'right' })
+  40 |   //  page.click('/html/body/ul/li[2]')  // Action that triggers popup
+  41 |   ]);
+  42 |
+  43 |  // await page.locator('/html/body/ul/li[2]').click()
+  44 |
+  45 |  await Popup01.waitForLoadState();
+  46 | console.log(await Popup01.title());
+  47 |
+  48 |   await page.waitForTimeout(4000)
+  49 |   
+  50 |
+  51 |
+  52 | })
+  53 |
+```

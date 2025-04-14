@@ -1,0 +1,2 @@
+The hidden box is not visible true
+The hidden box is visible true
